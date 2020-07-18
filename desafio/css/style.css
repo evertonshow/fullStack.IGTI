@@ -1,0 +1,68 @@
+@font-face {
+  font-family: aniron;
+  src: url(../fontes/anirm___.ttf);
+  src: url(../fontes/anirb___.ttf);
+}
+
+* {
+  outline-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  text-align: center;
+}
+
+.textColor {
+  color: #dd11c9;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.4rem;
+}
+.size {
+  width: 300px;
+  margin: 0px 20px;
+}
+
+#numberRed {
+  background-color: #ff0000;
+  color: #171718;
+  width: 80px;
+  text-align: center;
+  font-family: aniron;
+  font-weight: bold;
+  font-size: 1.2rem;
+  height: 2.4rem;
+}
+
+#numberGreen {
+  background-color: #008000;
+  color: #171718;
+  width: 80px;
+  text-align: center;
+  font-family: aniron;
+  font-weight: bold;
+  font-size: 1.2rem;
+  height: 2.4rem;
+}
+#numberBlue {
+  background-color: #0000ff;
+  color: #171718;
+  width: 80px;
+  text-align: center;
+  font-family: aniron;
+  font-weight: bold;
+  font-size: 1.2rem;
+  height: 2.4rem;
+}
+#res {
+  color: #171718;
+  width: 200px;
+  text-align: center;
+  font-family: aniron;
+  font-weight: bold;
+  font-size: 1.4rem;
+  border: 1px solid gold;
+}

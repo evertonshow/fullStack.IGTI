@@ -14,13 +14,14 @@ function start() {
       var typeName = e.target.value;
       globalNames.push(typeName);
     }
+    render();
   }
 
   inputName.focus();
-  render();
 }
 function render() {
   var validation = document.querySelector("#names");
+  validation.innerHTML = "";
   var ul = document.createElement("ul");
   for (let index = 0; index < globalNames.length; index++) {
     var currentName = globalNames[index];
@@ -28,10 +29,10 @@ function render() {
     var li = document.createElement("li");
     li.textContent = currentName;
     ul.appendChild(li);
-  }
-  validation.appendChild(ul);
-}
 
+    validation.appendChild(ul);
+  }
+}
 /*
 window.addEventListener("load", start);
 
@@ -140,10 +141,11 @@ function render() {
 
   divNames.appendChild(ul);
   clearInput();
-}
 
+}
 function clearInput() {
   inputName.value = "";
   inputName.focus();
 }
+
 */

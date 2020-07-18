@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Desafio 1</title>
+  </head>
+  <body>
+    <form action="">
+      <p>
+        <label for="rangeRed" class="textColor">(R) Red:</label>
+        <input
+          type="range"
+          name="rangeRed"
+          class="size"
+          id="rangeRed"
+          min="0"
+          max="255"
+          value="0"
+          step="1"
+        />
+        <input type="text" readonly disabled value="0" id="numberRed" />
+      </p>
+      <p>
+        <label class="textColor" for="rangeGreen">(G) Green:</label>
+        <input
+          type="range"
+          name="rangeGreen"
+          class="size"
+          id="rangeGreen"
+          min="0"
+          max="255"
+          value="0"
+          step="1"
+        />
+        <input type="text" readonly disabled value="0" id="numberGreen" />
+      </p>
+      <p>
+        <label class="textColor" for="rangeBlue">(B) Blue:</label>
+        <input
+          type="range"
+          name="rangeBlue"
+          class="size"
+          id="rangeBlue"
+          min="0"
+          max="255"
+          value="0"
+          step="1"
+        />
+        <input type="text" readonly disabled value="0" id="numberBlue" />
+      </p>
+    </form>
+
+    <div>
+      <input type="text" id="res" />
+    </div>
+    <script defer src="./js/script.js"></script>
+  </body>
+</html>
