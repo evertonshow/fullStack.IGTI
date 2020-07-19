@@ -10,9 +10,10 @@ numberBlue = document.getElementById('numberBlue');
 res = document.querySelector('#res');
 
 function resolutionColor() {
-  var r_hex = parseInt(rangeRed.value, 10).toString(16),
+  // utlizandos varios maneiras declara as entradas
+  var r_hex = parseFloat(rangeRed.value, 10).toString(16),
     g_hex = parseInt(rangeGreen.value, 10).toString(16),
-    b_hex = parseInt(rangeBlue.value, 10).toString(16),
+    b_hex = Number(rangeBlue.value, 10).toString(16),
     hex = '#' + pad(r_hex) + pad(g_hex) + pad(b_hex);
   body.style.backgroundColor = hex;
   res.value = hex;
@@ -21,10 +22,13 @@ function resolutionColor() {
 function pad(n) {
   return n.length < 2 ? '0' + n : n;
 }
-rangeRed.addEventListener('input', () => {
+// uzando o evento e a target
+rangeRed.addEventListener('input', (e) => {
   resolutionColor();
-  numberRed.value = rangeRed.value;
+  colorREd = e.target.value;
+  numberRed.value = colorREd;
 });
+//aqui so pega o valor pois nao precisa do evento as duas maneiras
 rangeGreen.addEventListener('input', () => {
   resolutionColor();
   numberGreen.value = rangeGreen.value;
@@ -33,4 +37,5 @@ rangeBlue.addEventListener('input', () => {
   resolutionColor();
   numberBlue.value = rangeBlue.value;
 });
-resolutionColor();
+//chamando a função ja inicia a pagina renderizada
+//resolutionColor();
