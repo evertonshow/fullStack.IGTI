@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Desafio 2</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 align="center">Pesquisa de Usuários</h1>
+
+      <div id="spinner" class="flex-row center">
+        <div class="preloader-wrapper active">
+          <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+        <span style="margin-left: 10px;"> Aguarde...</span>
+      </div>
+
+      <div id="iteracion" class="hidden">
+        <div class="flex-row">
+          <div class="input-field input">
+            <input id="inputFilter" type="text" class="validate" />
+            <label for="inputFilter">Buscar</label>
+          </div>
+
+          <button id="buttonFilter" class="waves-effect waves-light btn">
+            Buscar
+          </button>
+        </div>
+
+        <div class="flex-row flex-top">
+          <div class="panel" id="resultUser">
+            <h2>Nenhum usuário Filtrado</h2>
+          </div>
+          <div class="panel" id="resultStastics">
+            <h2>Estatíscas</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./js/people.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

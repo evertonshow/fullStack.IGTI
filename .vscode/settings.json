@@ -8,9 +8,9 @@
   "editor.fontSize": 15,
   "editor.lineHeight": 20,
   "editor.formatOnSave": true,
-  "editor.renderWhitespace": "all",
   "editor.rulers": [80, 120],
   "editor.tabSize": 2,
+  "editor.renderWhitespace": "all",
   "terminal.integrated.fontSize": 14,
   "emmet.syntaxProfiles": {
     "javascript": "jsx"
