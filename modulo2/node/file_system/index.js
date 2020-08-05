@@ -1,5 +1,4 @@
 import { promises as al, writeFile } from "fs";
-import { parse } from "path";
 
 async function start() {
   try {

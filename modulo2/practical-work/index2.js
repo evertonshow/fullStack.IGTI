@@ -13,7 +13,7 @@ async function init() {
       times.push({ time: partida.mandante, pontuacao: 0 });
       times.push({ time: partida.visitante, pontuacao: 0 });
     });
-
+    // console.log(times);
     //preenchendo a pontuacao dos times no array
     data.forEach((rodada) => {
       rodada.partidas.forEach((partida) => {
@@ -23,9 +23,8 @@ async function init() {
         const timeVisitante = times.find(
           (item) => item.time === partida.visitante
         );
-
         /*const timeMandante = findSimulado(partida.mandante);
-                const timeVisitante = findSimulado(partida.visitante);*/
+        const timeVisitante = findSimulado(partida.visitante);*/
 
         if (partida.placar_mandante > partida.placar_visitante) {
           timeMandante.pontuacao += 3;
@@ -35,13 +34,14 @@ async function init() {
           timeMandante.pontuacao += 1;
           timeVisitante.pontuacao += 1;
         }
+        console.log(timeMandante);
       });
     });
 
     times.sort((a, b) => {
       return b.pontuacao - a.pontuacao;
     });
-
+    //console.log(times);
     await salvaTimes();
     await salvaQuatroPrimeiros();
 
@@ -70,11 +70,11 @@ async function init() {
             return x;            
         });*/
     for (const x of array) {
-      console.log(await teste(x));
+      //   console.log(await teste(x));
     }
 
     for (let i = 0; i < array.length; i++) {
-      console.log(await teste(array[i]));
+      // console.log(await teste(array[i]));
     }
   } catch (err) {
     console.log(err);
