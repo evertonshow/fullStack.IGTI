@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { getNewTimestamp } from './helpers/dateTimeHelpers';
+import { getNewTimestamp } from "./helpers/dateTimeHelpers";
 
 export default class App extends Component {
   constructor() {
