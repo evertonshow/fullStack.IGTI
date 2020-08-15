@@ -1,10 +1,10 @@
-window.addEventListener('load', start);
+window.addEventListener("load", start);
 
 const clickArray = [];
 
 function start() {
-  const button = document.querySelector('#clickButton');
-  button.addEventListener('click', handleButtonClick);
+  const button = document.querySelector("#clickButton");
+  button.addEventListener("click", handleButtonClick);
 }
 
 function handleButtonClick() {
@@ -14,11 +14,11 @@ function handleButtonClick() {
   render(item);
 }
 
-function render(item) {
-  const ul = document.querySelector('#data');
+function render(itens) {
+  const ul = document.querySelector("#data");
 
-  const li = document.createElement('li');
-  li.textContent = item;
+  const li = document.createElement("li");
+  li.textContent = itens;
 
   ul.appendChild(li);
 
