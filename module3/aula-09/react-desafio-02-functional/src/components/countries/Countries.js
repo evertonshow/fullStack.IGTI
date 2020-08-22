@@ -1,7 +1,7 @@
-import React from 'react';
-import Country from './Country';
+import React from "react";
+import Country from "./Country";
 
-import css from './countries.module.css';
+import css from "./countries.module.css";
 
 export default function Countries({ countries }) {
   return (

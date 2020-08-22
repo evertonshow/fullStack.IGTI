@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Header from './components/Header';
-import Spinner from './components/Spinner';
-import Candidates from './components/Candidates';
+import React, { Component } from "react";
+import Header from "./components/Header";
+import Spinner from "./components/Spinner";
+import Candidates from "./components/Candidates";
 
 export default class App extends Component {
   constructor() {
@@ -18,7 +18,7 @@ export default class App extends Component {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      fetch('http://localhost:8080/votes')
+      fetch("http://localhost:8080/votes")
         .then((res) => {
           return res.json();
         })
