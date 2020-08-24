@@ -5,21 +5,16 @@ import Box from "./box";
 
 import { Chart } from "primereact/chart";
 
-export default function JuroComposto({ initialMoney, interestRates, month }) {
-  const [compoundINterest, setCompoundINterest] = useState([]);
+export default function JuroComposto() {
+  const [compoundInterests, setCompoundInterests] = useState([]);
   const [dataChartLine, setDataChartLine] = useState({});
-  const [initialCapital, setCapitialInicial] = useState(initialMoney);
-  const [monthlyINterest, setMonthlyINterest] = useState(interestRates);
-  const [monthPeriod, setMonthPeriod] = useState(month);
+  const [initialCapital, setCapitialInicial] = useState();
+  const [monthlyInterest, setMonthlyInterest] = useState("");
+  const [monthPeriod, setMonthPeriod] = useState("");
 
   useEffect(() => {
     const getCompoundInterest = () => {
-      return compoundInterest(
-        initialCapital,
-
-        monthlyINterest,
-        monthPeriod
-      );
+      return compoundInterest(initialCapital, monthlyInterest, monthPeriod);
     };
 
     /* usado pra montar o grafico */
@@ -29,10 +24,10 @@ export default function JuroComposto({ initialMoney, interestRates, month }) {
     const chartTotalInterest = [0];
     const chartInitialCapital = [initialCapital];
 
-    chartLine.forEach((chart) => {
-      chartLabels.push(chart.monthPeriod);
-      chartAccumulatedMoney.push(chart.valorMensal);
-      chartTotalInterest.push(chart.valueMonthInterest);
+    chartLine.forEach(({ month, monthValue, valueMonthInterest }) => {
+      chartLabels.push(month);
+      chartAccumulatedMoney.push(monthValue);
+      chartTotalInterest.push(valueMonthInterest);
       chartInitialCapital.push(initialCapital);
     });
 
@@ -64,18 +59,21 @@ export default function JuroComposto({ initialMoney, interestRates, month }) {
     });
 
     /* conforme desafio */
-    setCompoundINterest(getCompoundInterest());
-  }, [initialCapital, monthlyINterest, monthPeriod]);
+    setCompoundInterests(getCompoundInterest());
+  }, [initialCapital, monthlyInterest, monthPeriod]);
 
   const handleChangeInitialMoney = (event) => {
     setCapitialInicial(event.target.value);
   };
 
-  const handleChangeMonthlyINterest = (event) => {
-    setMonthlyINterest(event.target.value);
+  const handleChangeMonthlyInterest = ({ target }) => {
+    // desestruturando do target direto aonde se coloca a chaves
+    setMonthlyInterest(target.value);
   };
-  const handleChangePeriodoMensal = (event) => {
-    setMonthPeriod(event.target.value);
+  const handleChangePeriodoMensal = ({ target }) => {
+    //quando tive mais de um item pra busca da target
+    const { value } = target;
+    setMonthPeriod(value);
   };
 
   return (
@@ -85,7 +83,7 @@ export default function JuroComposto({ initialMoney, interestRates, month }) {
           <label>Montante inicial: </label>
           <input
             type="number"
-            defaultValue={initialCapital}
+            value={initialCapital}
             onChange={handleChangeInitialMoney}
           ></input>
         </div>
@@ -94,20 +92,20 @@ export default function JuroComposto({ initialMoney, interestRates, month }) {
           <label>Taxa de juros mensal: </label>
           <input
             type="number"
-            defaultValue={monthlyINterest}
+            value={monthlyInterest}
             min="-12"
             max="12"
             step="0.1"
-            onChange={handleChangeMonthlyINterest}
+            onChange={handleChangeMonthlyInterest}
           ></input>
         </div>
         <div className="col s4">
           <label>Perido (mensal): </label>
           <input
             type="number"
-            defaultValue={monthPeriod}
+            value={monthPeriod}
             min="1"
-            max="36"
+            max="72"
             onChange={handleChangePeriodoMensal}
           ></input>
         </div>
@@ -122,30 +120,38 @@ export default function JuroComposto({ initialMoney, interestRates, month }) {
         }}
       >
         {/* conforme desafio */}
-        {compoundINterest.map((montante) => (
-          <Box key={montante}>
-            <div className="card horizontal z-depth-4">
-              <div className="card-stacked">
-                <div className="card-content">
-                  <div className="right-align">
-                    <h5>{montante.monthPeriod}</h5>
+        {compoundInterests.map((montante) => {
+          const {
+            month,
+            monthValue,
+            valueMonthInterest,
+            percentageMonth,
+          } = montante;
+          return (
+            <Box key={month}>
+              <div className="card horizontal z-depth-4">
+                <div className="card-stacked">
+                  <div className="card-content">
+                    <div className="right-align">
+                      <h5>{month}</h5>
+                    </div>
+                    <p>{formatCurrency(monthValue)}</p>
+                    <p>
+                      {
+                        valueMonthInterest > 0
+                          ? `+ (${formatCurrency(valueMonthInterest)})`
+                          : formatCurrency(valueMonthInterest)
+                        // ? formatCurrency(montante.valorMensalMaisJuros)
+                        // : formatCurrency(montante.valorMensalMaisJuros)
+                      }
+                    </p>
+                    <p>{formatPercent(percentageMonth)}</p>
                   </div>
-                  <p>{formatCurrency(montante.valorMensal)}</p>
-                  <p>
-                    {
-                      montante.valueMonthInterest > 0
-                        ? `+ (${formatCurrency(montante.valueMonthInterest)})`
-                        : formatCurrency(montante.valueMonthInterest)
-                      // ? formatCurrency(montante.valorMensalMaisJuros)
-                      // : formatCurrency(montante.valorMensalMaisJuros)
-                    }
-                  </p>
-                  <p>{formatPercent(montante.percentageMonth)}</p>
                 </div>
               </div>
-            </div>
-          </Box>
-        ))}
+            </Box>
+          );
+        })}
 
         {/* usado pra montar o grafico */}
         {
