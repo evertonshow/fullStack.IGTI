@@ -1,7 +1,7 @@
 import React from 'react';
 
 function App() {
-  return <div>Olá, mundo!</div>;
+  return <div>OLa Mundo!</div>
 }
 
 export default App;
